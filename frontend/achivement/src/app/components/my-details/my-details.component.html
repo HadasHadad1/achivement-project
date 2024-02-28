@@ -1,0 +1,56 @@
+<div style="text-align:center;">
+<!-- <form style="text-align: center;" >  -->
+  <h3>אזור אישי</h3>
+  <div style="margin-left: auto; margin-right: auto; width: 80%;">
+  <ejs-schedule  #scheduleObj (eventClick)="onEventClick($event)" (eventSave)="onEventSave($event)" 
+  (popupOpen)="onPopupOpen($event)" (actionComplete)="onActionComplete($event)"
+   [eventSettings]="eventData" [selectedDate]="currentDate" timezone="UTC" [currentView]="newViewMode"></ejs-schedule>
+  </div>
+
+     <!-- <h1>האזור האישי</h1>
+    <h4>,שלום {{ this.usernowS.FirstName}}</h4> -->
+    <!-- <h3>ציונך בקורסים הם</h3>
+    
+    <table  id="myTable" dir="rtl" style="width: 600px; margin-left: 455px;">
+      <tr  class="header">
+        <th style="width:20%;"> שם הקורס</th>
+        <th style="width:30%;">ציון מבחן מתחילים</th>
+        <th style="width:60%;">ציון מבחן מתקדמים</th>
+      </tr>
+    
+      <tr *ngFor="let o of AllDetails "> 
+        <td>{{o.KourseName}}</td>
+        <td *ngIf="o.LowMark!=-1" > {{o.LowMark}} </td>
+        <td *ngIf="o.LowMark==-1" > לא נבחנת מבחן זה</td>
+        <td *ngIf="o.HighMark!=-1" > {{o.HighMark }}</td>
+        <td *ngIf="o.HighMark==-1" > לא נבחנת מבחן זה</td>
+      </tr>
+    
+    </table> 
+     <div style="margin-left: 700px;" class="loader" *ngIf="degela"></div>
+    <br><br>
+    <div style="margin-right: 700px;" class="loader"*ngIf="b" ></div>
+    <div class="card" style="margin-left: 475px;">
+    <div class=" container"    >
+      <h2 >ממוצעים</h2>
+      <p style="color: white;">{{AvgLow}}:ממוצע מתחילים</p>
+     <p style="color: white;">{{AvgHigh}}:ממוצע מתקדמים</p>
+    <p style="color: white;">{{AvgAll}} :ממוצע כללי</p>
+    </div>
+    </div><br>
+    <div class="card" style="margin-left: 475px; height:280px ;">
+      <div class=" container"></div>
+    <h2>חיפוש</h2>
+    <p>חיפוש לפי תחום עיסוק</p>
+    <select dir="rtl" style=" width: 120px; margin-left: 210px;"class="form-select" aria-label="Default select example" name="course"[(ngModel)]="course" >
+      <option *ngFor="let i of allcourse"  [value]="i.CourseId" selected="i.CourseId" >{{i.Name}}</option>
+    </select><br>
+    <button style=" width: 80px; margin-left: 230px;" class="btn btn-outline-danger" type="submit"(click)="findc()">חפש</button>  <br>
+    <button style=" width: 290px; margin-left: 130px;" pButton pRipple  class="p-button-rounded p-button-danger" label="חזרה לרשימה המלאה" type="submit"(click)="before()" ></button>
+    </div>
+    <br> 
+     -->
+     <button class="custom-button" routerLink="/addTarget">הוסף יעד</button>
+
+<!-- </form> -->
+</div>

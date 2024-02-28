@@ -1,0 +1,70 @@
+
+<!-- מייל -->
+<!-- <div class="example-container">
+  <mat-form-field>
+    <mat-label>Enter your email</mat-label>
+    <input matInput type="email" placeholder="pat@example.com" formControlName="email" required>
+    <mat-error *ngIf="getEmail.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field> -->
+<!-- </div>
+
+
+סיסמא -->
+<!-- <div class="example-container">
+  <mat-form-field>
+    <mat-label>Enter your password</mat-label>
+    <input matInput [type]="hide ? 'password' : 'text'" formControlName="hide" required>
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+
+
+<button class="custom-button">כניסה</button>
+
+<button><a class="nav-link" routerLink="/signUp">הרשמה</a></button>
+</form>
+
+</div> -> --> 
+<!-- <app-menu></app-menu> -->
+
+<div>
+  <p>לכניסה לאתר הכנס מייל וסיסמא</p><br>
+  
+  <form [formGroup]="SignInForm!" (ngSubmit)="foundUser()">
+ 
+
+    <!-- מייל -->
+    <div class="example-container">
+      <mat-form-field>
+        <mat-label>Enter your email</mat-label>
+        <input matInput type="email" placeholder="pat@example.com" formControlName="email" required>
+        <mat-error *ngIf="getEmail?.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- סיסמא -->
+    <div class="example-container">
+      <mat-form-field>
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+
+    <!-- כפתור כניסה -->
+    <!-- <button mat-raised-button color="primary" type="submit">כניסה</button> -->
+    <!-- <input type="submit" class="custom-button" [disabled]="!SignInForm!.valid"> -->
+    <button class="custom-button" routerLink="/my-details">כניסה</button>
+
+    <!-- לינק לעמוד הרישום -->
+    <button class="custom-button" routerLink="/signUp">הרשמה</button>
+    <button style="width: 140px;" type="button" class="custom-button" (click)="ForgetPasword()">שכחתי סיסמא</button>
+    <!-- <button class="custom-button"><a routerLink="/home">לדף הבית</a></button> -->
+
+
+  </form>
+</div>

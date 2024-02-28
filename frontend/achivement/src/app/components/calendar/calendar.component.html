@@ -1,0 +1,15 @@
+<h2>{{ getMonthName() }} {{ getFullYear() }}</h2>
+<table>
+  <thead>
+    <tr>
+      <th *ngFor="let day of ['א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ש']">{{ day }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let week of getWeeks()">
+      <td *ngFor="let date of week">
+        <button (click)="toggleDate(date)" [class.positive]="isPositive(date)" [class.negative]="isNegative(date)">{{ date.getDate() }}</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

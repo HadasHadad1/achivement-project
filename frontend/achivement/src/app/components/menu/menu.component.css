@@ -1,0 +1,14 @@
+body {
+    background-color: transparent; /* מוחק את הרקע */
+}
+
+.navbar {
+    background-color: transparent !important; /* מוחק את הרקע */
+    border: none; /* מוחק את הגבולות */
+    color: black !important;
+}
+a{
+    color: black !important;
+    font-size: 20px; /* הגדלת גודל הכתב */
+    font-weight: bolder; /* הבלטת הכתב */
+}

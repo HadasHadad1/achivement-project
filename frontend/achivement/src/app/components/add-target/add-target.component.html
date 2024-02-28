@@ -1,0 +1,145 @@
+<!-- <app-menu></app-menu> -->
+<!-- <label for="description"> description</label>
+<input type="text" id="description" name="description" formControlName="description">
+ <div *ngIf="description.invalid && (description.touched ||description.dirty)">
+    <p *ngIf="description.errors!['required']">שדה חובה</p>
+</div> -->
+<!-- <div *ngIf="description && description.invalid && (description.touched || description.dirty)">
+    <p *ngIf="description.errors.required">שדה חובה</p>
+</div> --> 
+ <!-- <br><br>    -->
+ 
+  <!-- <AddTargetForm [formGroup]="AddTargetForm!" (ngSubmit)=" addTarget()"> -->
+    <form [formGroup]="AddTargetForm!" (ngSubmit)=" addTarget()">
+
+ <!-- <div>  -->
+
+<!--   תאור היעד-->
+<mat-form-field appearance="fill">
+  <mat-label>תאור</mat-label>
+  <input matInput type="text" id="Description" formControlName="Description" >
+</mat-form-field>
+<div *ngIf="getDescription.invalid && (getTz.touched ||getTz.dirty)">
+  <p *ngIf="getDescription.errors!['required']">שדה חובה</p>
+  
+</div>
+<!--צריך התחלה וסיום-->
+
+   <mat-form-field>
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+                <input matStartDate  formControlName="StartDate">
+                <input matEndDate  formControlName="EndDate">
+        </mat-date-range-input>
+            <!-- <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> -->
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+<!-- </div>        -->
+   <!-- <form *ngIf="targetForm" [formGroup]="targetForm" (ngSubmit)="addTarget()">  -->
+    <!-- <mat-form-field appearance="fill">
+        <mat-label>Start Date</mat-label>
+        תפעיל את השדה הזה עם formControlName כדי להשתמש בטופס --> 
+        <!-- <input matInput [matDatepicker]="startDatePicker" formControlName="startDate" placeholder="Start Date">
+        <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #startDatePicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>
+            ate</mat-label>
+        תפעיל את השדה הזה עם formControlName כדי להשתמש בטופס -->
+        <!-- <input matInput [matDatepicker]="endDatePicker" formControlName="endDate" placeholder="End Date">
+        <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #endDatePicker></mat-datepicker>
+    </mat-form-field> -->
+  
+    <mat-form-field appearance="fill">
+        <mat-label>Choose frequency</mat-label>
+        <!-- תפעיל את השדה הזה עם [(ngModel)] כדי להשתמש במשתנה frequency -->
+        <!-- <mat-select [(ngModel)]="frequency" formControlName="frequency"> -->
+          <mat-select [(ngModel)]="frequency" #f1requency="ngModel" (ngModelChange)="onFrequencyChange()">
+            <mat-option value="daily">Daily</mat-option>
+            <mat-option value="weekly">Weekly</mat-option>
+            <mat-option value="monthly">Monthly</mat-option>
+            <mat-option value="yearly">Yearly</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <!-- הוספת התנאים להצגת הבחירות השונות בהתאם לתדירות -->
+    <!-- כאן אפשר להשתמש בתנאים כמו *ngIf="frequency === 'daily'" וכן הלאה -->
+
+  
+<div *ngIf="frequency == 'daily'">
+    <mat-form-field appearance="fill">
+      <mat-label>Choose hours of the day</mat-label>
+      <mat-select [(ngModel)]="selectedHours" multiple><br>
+        <mat-option *ngFor="let hour of hours" [value]="hour">{{ hour }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  
+  <div *ngIf="frequency === 'weekly'">
+    <mat-form-field appearance="fill">
+      <mat-label>Choose days of the week</mat-label>
+      <mat-select [(ngModel)]="selectedDays" multiple>
+        <mat-option *ngFor="let day of days" [value]="day">{{ day }}</mat-option>
+      </mat-select>
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+      <mat-label>Choose hours of the selected days</mat-label>
+      <mat-select [(ngModel)]="selectedHours" multiple>
+        <mat-option *ngFor="let hour of hours" [value]="hour">{{ hour }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  
+  <div *ngIf="frequency === 'monthly'">
+    <mat-form-field appearance="fill">
+      <mat-label>Choose date of the month</mat-label>
+      <input matInput [matDatepicker]="startDatePicker" placeholder="Choose date">
+      <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #startDatePicker></mat-datepicker>
+    </mat-form-field><br>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Choose hours of the selected date</mat-label>
+      <mat-select [(ngModel)]="selectedHours" multiple>
+        <mat-option *ngFor="let hour of hours" [value]="hour">{{ hour }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  
+
+  
+  <div *ngIf="frequency === 'yearly'">
+    <mat-form-field appearance="fill">
+      <mat-label>Choose months of the year</mat-label>
+      <mat-select [(ngModel)]="selectedMonths" multiple>
+        <mat-option *ngFor="let month of months" [value]="month">{{ month }}</mat-option>
+      </mat-select>
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+        <mat-label>Choose days of the selected months</mat-label>
+        <input matInput [matDatepicker]="dayPicker" placeholder="Choose date">
+        <mat-datepicker-toggle matSuffix [for]="dayPicker"></mat-datepicker-toggle>
+        <mat-datepicker #dayPicker></mat-datepicker>
+      </mat-form-field><br>
+    <mat-form-field appearance="fill">
+      <mat-label>Choose hours of the selected days</mat-label>
+      <mat-select [(ngModel)]="selectedHours" multiple>
+        <mat-option *ngFor="let hour of hours" [value]="hour">{{ hour }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+ 
+  <br><br>
+ 
+  <!-- <button type="submit">Add Target</button>
+  <button  style="height: 5px; width: 15; background-color: darkkhaki;"   class="button button3" type="submit" >Add Target</button><br> -->
+ 
+  <button class="btn btn1"  routerLink="/my-details" (click)="addTarget()" >הוסף</button>
+  <!-- <button class="btn btn1" data-id="btn1">כפתור</button> -->
+
+  <!-- </form> -->
+</form>

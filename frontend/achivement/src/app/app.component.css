@@ -1,0 +1,15 @@
+/* body { */
+    /* background-image: url('../assets/pic/goal.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;  */
+    /* position: fixed;  */
+     /* כדי להבטיח שהתמונה תהיה ברקע */
+    /* top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;  */
+  /* כדי להבטיח שהתמונה תהיה מאחורי כל האלמנטים */
+/* }  */

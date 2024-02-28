@@ -1,0 +1,82 @@
+<!-- <app-menu></app-menu> -->
+<div class="form">
+  <br><br>
+  <form *ngIf="!!SignUpForm" class="SignUpForm" [formGroup]="SignUpForm" (ngSubmit)="register()">
+      <mat-form-field class="example-full-width">
+        <mat-label>תעודת זהות</mat-label>
+        <input matInput formControlName="Tz" placeholder="מספר זהות" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="(tz.hasError('required'))">Tz is <strong>required</strong></mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>שם פרטי</mat-label>
+        <input matInput formControlName="FirstName" placeholder="שם פרטי" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="(firstName.hasError('required'))">FirstName is <strong>required</strong></mat-error>
+      </mat-form-field>
+    
+      <mat-form-field class="example-full-width">
+        <mat-label>שם משפחה</mat-label>
+        <input matInput formControlName="LastName" placeholder="שם משפחה" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="(lastName.hasError('required'))">LastName is <strong>required</strong></mat-error>
+      </mat-form-field>
+    
+    <!-- <mat-form-field class="example-full-width">
+      <mat-label>מייל</mat-label>
+      <input matInput formControlName="Email" placeholder="מייל" >
+    </mat-form-field> -->
+
+    <mat-form-field class="example-full-width">
+      <mat-label>מייל</mat-label>
+      <input type="email" matInput  formControlName="Email" [errorStateMatcher]="matcher"
+             placeholder="Ex. pat@example.com">
+      <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+        <mat-error *ngIf="(email.hasError('email') && !email.hasError('required'))">הכנס כתובת אימייל תקינה</mat-error>
+        <mat-error *ngIf="(email.hasError('required'))">מייל שדה <strong>חובה</strong></mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>סיסמה</mat-label>
+      <input matInput formControlName="Pasword" placeholder="סיסמא" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="(pasword.hasError('required'))">Password is <strong>required</strong></mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>טלפון</mat-label>
+      <input matInput formControlName="Phone" placeholder="טלפון" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="(phone.hasError('required'))">Phone is <strong>required</strong></mat-error>
+    </mat-form-field>
+
+    <div>
+      <label>מגדר:</label>
+      <mat-radio-group formControlName="Gender">
+        <mat-radio-button value="זכר">זכר</mat-radio-button>
+        <mat-radio-button value="נקבה">נקבה</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <!-- <mat-form-field class="example-full-width">
+      <label id="example-radio-group-label">מגדר</label>
+      <mat-radio-group
+        aria-labelledby="example-radio-group-label"
+        class="example-radio-group"
+        [(ngModel)]="Gender"
+        value="Gender"
+        formControlName="Gender"
+        >
+        <mat-radio-button class="example-radio-button" value="זכר">זכר</mat-radio-button>
+        <mat-radio-button class="example-radio-button" value="נקבה">נקבה</mat-radio-button>
+      </mat-radio-group> -->
+      <!-- <mat-label>מגדר</mat-label>
+      <mat-radio-group formControlName="Gender" aria-label="Select an option">
+        <mat-radio-button value="זכר">זכר</mat-radio-button>
+        <mat-radio-button value="נקבה">נקבה</mat-radio-button>
+      </mat-radio-group> -->
+    <!-- </mat-form-field> -->
+    <!-- <button  class="custom-button" (click)="register()">אישור</button> -->
+    <!-- routerLink="/my-details" -->
+    <!-- [disabled]="!SignUpForm.valid" -->
+    <button class="btn btn1" data-id="btn1" type="submit">הרשמה</button>
+    <br/><span style="color: red;">{{Error}}</span><br/>
+  </form> 
+</div>
+   

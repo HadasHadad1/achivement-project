@@ -1,0 +1,70 @@
+ <div  class="img">
+    <br><br><br>
+    <div class="card" style="margin-left: 595px; width: 300px; height: 340px; background:none; "  >
+    <div class=" container"    >
+    <form #forgetpassword="ngForm" (ngSubmit)=SEmail() >
+ 
+    <br>
+  <h2>שכחתי סיסמא</h2>
+ <div *ngIf="this.degel1" style="text-align: center;">
+ <div class="form-group">
+    <input [(ngModel)]="this.tz" type="text" dir="rtl" class="form-control" placeholder="מספר זהות"
+  aria-label="מספר זהות " style="width: 250px; margin-top: 30px; margin-left: 20px;" name="Tz" #Tz="ngModel"
+  required maxlength="9" pattern="[0-9]*" (keyup)="s.checkTz(this.tz)" >
+    <!-- <div [hidden]="s.isValidTz||Tz.pristine" ><p style="color: red;">חובה להזין מספר זהות תקין </p></div> -->
+    </div><br>
+    <div class="form-group">
+       <input style="width: 250px;  margin-left: 20px;" type="email" dir="rtl" 
+       class="form-control" placeholder="דואר אלקטרוני" name="email"id="email"
+             [(ngModel)]="this.email" #Email="ngModel"required
+       pattern="([0-9a-zA-Z]([_\\.]*[0-9a-zA-Z]+)*)@([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)[\\.]([a-zA-Z]{2,9})$">
+       <div [hidden]="Email.valid||Email.pristine"style="color: red;"><p>חובה להזין כתובת דואר תקינה</p></div>
+       </div>
+ <br> 
+  <!-- <button   type="submit"  class="custom-button" [disabled]="!forgetpassword.valid || !s.isValidTz" >אישור</button> -->
+  <button   type="submit"  class="custom-button"  >אישור</button>
+ </div>
+ 
+   </form>
+ 
+   
+ 
+ 
+ <div class=" container" *ngIf="degela"   >
+    <h4>הזנ/י סיסמא שהתקבלה בדואר האלקטרוני</h4>
+ <div *ngIf="this.degel2">
+     <input [(ngModel)]="this.p" type="text" dir="rtl" class="form-control" placeholder="סיסמא"
+     aria-label="סיסמא " style="width: 200px; margin-left: 35px;margin-top: 30px; " > <br>
+     <button style="margin-left: 90px;"  type="button"  class="custom-button"  (click)="SPassword()">אישור</button>
+  </div>
+  </div>
+ 
+    <div *ngIf="degelb" >
+       <h4> הזנ/י סיסמא חדשה</h4>
+  <div >
+ 
+    <p-password  [(ngModel)]="this.newpassword1" placeholder="הזן סיסמא חדשה" style="width: 200px;margin-left: 50px;margin-top: 30px; text-align: center;">
+       <ng-template pTemplate="header">
+           <h6>הזן סיסמא חדשה</h6>
+       </ng-template>
+       <ng-template pTemplate="footer">
+           <p class="p-mt-2">הצעות</p>
+           <ul dir="rtl" class="p-pl-2 p-ml-2 p-mt-0" style="line-height: 1.5">
+               <li>לפחות אות קטנה אחת</li>
+               <li>לפחות אות גדולה אחת</li>
+               <li>לפחות מספרי אחד</li>
+               <li>מינימום 8 תווים</li>
+           </ul>
+       </ng-template>
+   </p-password><br><br>
+   <!-- <p-password  placeholder="אימות סיסמא" [(ngModel)]="this.newpassword2" [toggleMask]="true" style="width: 170px;margin-left: 40px;margin-top: 30px; text-align: center;"></p-password><br> -->
+     <br>
+     <button style="margin-left: 115px;"  type="button" label="אישור" class="custom-button"  (click)="SnewPassword()"></button>
+  </div>
+ </div>
+ 
+ </div>
+ </div>
+ </div>
+ 
+

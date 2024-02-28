@@ -1,0 +1,115 @@
+:host {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ justify-content: center; 
+  height: 100vh;
+}
+
+/* :host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-items: center;
+} */
+
+.form {
+width: 100%;
+max-width: 600px; /* רוחב מקסימלי של הטופס */
+margin: 0 auto; /* מרכז את הטופס באופן אופקי */
+padding: 20px;
+background-color:rgba(255, 255, 255,0.5);
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* הצללה */
+text-align: center;
+}
+
+
+/* סגנון לכל השדות הקלט */
+.mat-form-field {
+  display: flex; /* נעילת Flexbox */
+  flex-direction: row; /* כיוון השורות */
+  align-items: center; /* מיון אופקי במרכז */
+  margin-bottom: 50px; /* רווח בין השדות */
+}
+
+/* סגנון לתוויות השדות */
+.mat-form-field label {
+  margin-right: 20px; /* רווח מימין */
+}
+
+.form-content {
+  display: flex; /* הצגת Flexbox */
+  justify-content: space-between; /* מרחק שווה בין האלמנטים */
+}
+
+/* סגנון לכל שדה קלט */
+.mat-form-field {
+  flex: 1; /* התאמת גודל אוטומטית לכל תא */
+  margin-right: 10px; /* מרחק מימין */
+}
+
+/* 
+.custom-button-container {
+  display: flex;
+  justify-content: center;
+  margin-left: 5%;
+} */
+
+
+/* סגנון לכפתור */
+
+/*.custom-button {
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 20px; /* גודל הגופן */
+  /* padding: 15px 20px; /* רווחים בין הכפתור לתוכן*/ 
+  /* width: 200px; רוחב הכפתור בפיקסלים */ */
+   /* צבע הטקסט */
+  /* border:#000; מחיקת גבולות */
+  /* cursor: pointer; שינוי לסמן העכבר */
+  /* size:300px;
+  background-color: #ff5722; צבע מותאם אישית */
+  /* color: rgb(2, 2, 2); /* צבע טקסט  */
+/* }*/ */
+
+/* .custom-button {
+  background-color: #ff5722; /* צבע מותאם אישית */
+  /* color: white; צבע טקסט */
+/* } */
+.btn {
+  color: #fefefe;
+  background: #62757f;
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none;
+  border: 4px solid #62757f;
+  text-align: center;
+}
+
+.btn span {
+  transition: all 0.3s;
+  line-height: 1;
+}
+
+.btn::before {
+  opacity: 0;
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(0.1, 0.1);
+}
+
+.btn:hover::before {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+
+.btn::after {
+  transition: all 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.btnhover::after {
+  transform: scale(0, 0);
+  opacity: 0;
+}
