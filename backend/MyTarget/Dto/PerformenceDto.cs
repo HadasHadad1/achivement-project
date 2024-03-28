@@ -37,7 +37,7 @@ namespace Dto
             p.IdPerformence = pDto.IdPerformence;
             p.IdTargets = pDto.IdTargets;
             p.ExecutionDate = pDto.ExecutionDate;
-            p.CountPerformence = pDto.CountPerformence;
+            p.CountPerformence = (int)pDto.CountPerformence;
             return p;
         }
 

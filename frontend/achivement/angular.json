@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "newProject": {
+    "achivement": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -70,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "newProject:build:production"
+              "browserTarget": "achivement:build:production"
             },
             "development": {
-              "browserTarget": "newProject:build:development"
+              "browserTarget": "achivement:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -81,7 +81,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "newProject:build"
+            "browserTarget": "achivement:build"
           }
         },
         "test": {

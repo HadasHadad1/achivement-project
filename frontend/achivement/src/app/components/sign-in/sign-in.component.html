@@ -49,7 +49,7 @@
       <mat-form-field>
         <mat-label>Enter your password</mat-label>
         <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
       </mat-form-field>
@@ -57,8 +57,8 @@
 
     <!-- כפתור כניסה -->
     <!-- <button mat-raised-button color="primary" type="submit">כניסה</button> -->
-    <!-- <input type="submit" class="custom-button" [disabled]="!SignInForm!.valid"> -->
-    <button class="custom-button" routerLink="/my-details">כניסה</button>
+    <input type="submit" value="כניסה" class="custom-button" [disabled]="!SignInForm!.valid">
+    <!-- <button class="custom-button" routerLink="/my-details">כניסה</button> -->
 
     <!-- לינק לעמוד הרישום -->
     <button class="custom-button" routerLink="/signUp">הרשמה</button>

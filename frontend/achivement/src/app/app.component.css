@@ -13,3 +13,7 @@
     z-index: -1;  */
   /* כדי להבטיח שהתמונה תהיה מאחורי כל האלמנטים */
 /* }  */
+.containerAll{
+  position: relative;
+  top: 50px;
+}

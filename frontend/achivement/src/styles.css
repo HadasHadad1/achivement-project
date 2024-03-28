@@ -4,7 +4,7 @@ html, body { height: 100%; }
 body { 
     margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
         /* background-image: url('./assets/pic/goal.jpg'); */
-        background-image: url('../assets/pic/goal.jpg');
+        background-image: url('./assets/pic/goal.jpg');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -17,4 +17,12 @@ body {
         height: 100%;
         z-index: -1; /* כדי להבטיח שהתמונה תהיה מאחורי כל האלמנטים */
     
+}
+
+/* body div:first {
+    display: none !important;  
+} */
+/* Hide Syncfusion license validation message */
+.e-license-msg {
+    display: none !important;
 }

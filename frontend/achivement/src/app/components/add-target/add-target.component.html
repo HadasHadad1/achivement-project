@@ -10,7 +10,7 @@
  <!-- <br><br>    -->
  
   <!-- <AddTargetForm [formGroup]="AddTargetForm!" (ngSubmit)=" addTarget()"> -->
-    <form [formGroup]="AddTargetForm!" (ngSubmit)=" addTarget()">
+<form [formGroup]="AddTargetForm!" (ngSubmit)=" addTarget()">
 
  <!-- <div>  -->
 
@@ -20,11 +20,9 @@
   <input matInput type="text" id="Description" formControlName="Description" >
 </mat-form-field>
 <div *ngIf="getDescription.invalid && (getTz.touched ||getTz.dirty)">
-  <p *ngIf="getDescription.errors!['required']">שדה חובה</p>
-  
+  <p *ngIf="getDescription.errors!['required']">שדה חובה</p>  
 </div>
 <!--צריך התחלה וסיום-->
-
    <mat-form-field>
         <mat-label>Enter a date range</mat-label>
         <mat-date-range-input [rangePicker]="picker">
@@ -57,11 +55,12 @@
         <mat-label>Choose frequency</mat-label>
         <!-- תפעיל את השדה הזה עם [(ngModel)] כדי להשתמש במשתנה frequency -->
         <!-- <mat-select [(ngModel)]="frequency" formControlName="frequency"> -->
-          <mat-select [(ngModel)]="frequency" #f1requency="ngModel" (ngModelChange)="onFrequencyChange()">
-            <mat-option value="daily">Daily</mat-option>
+          <mat-select (selectionChange)="onChangeFrequency($event)" formControlName="IdFrequencyTypes">
+            <!-- <mat-option value="daily">Daily</mat-option>
             <mat-option value="weekly">Weekly</mat-option>
             <mat-option value="monthly">Monthly</mat-option>
-            <mat-option value="yearly">Yearly</mat-option>
+            <mat-option value="yearly">Yearly</mat-option> -->
+            <mat-option *ngFor="let f of frequencyTypes" [value]="f.IdFrequencyTypes">{{f.Description}}</mat-option>
         </mat-select>
     </mat-form-field>
 
@@ -69,31 +68,52 @@
     <!-- כאן אפשר להשתמש בתנאים כמו *ngIf="frequency === 'daily'" וכן הלאה -->
 
   
-<div *ngIf="frequency == 'daily'">
+<!-- <div *ngIf="frequency == 'daily'"> -->
+  <div *ngIf="idFrequencyTypes.value == 1">
     <mat-form-field appearance="fill">
       <mat-label>Choose hours of the day</mat-label>
-      <mat-select [(ngModel)]="selectedHours" multiple><br>
+        <!-- <mat-select [(ngModel)]="selectedHours"><br>
         <mat-option *ngFor="let hour of hours" [value]="hour">{{ hour }}</mat-option>
+      </mat-select> -->
+      <mat-select multiple (selectionChange)="onChangeHours($event)">
+        <mat-option *ngFor="let hour of hours; let i = index;" [value]="i">{{ hour.Desc }}</mat-option>
       </mat-select>
     </mat-form-field>
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>Choose Hour of the Day (24-hour format)</mat-label>
+      <input matInput [matTimepicker]="timepicker" placeholder="Select Time" [(ngModel)]="selectedTime" (input)="onTimeChange($event)">
+      <button mat-button [matTimepickerToggle]="timepicker"></button>
+      <mat-timepicker #timepicker></mat-timepicker>
+    </mat-form-field> -->
+    <!-- <mat-form-field appearance="fill">
+      <input matInput [matDatepicker]="timepicker" placeholder="Select Time" [(ngModel)]="selectedTime" (input)="onTimeChange($event)">
+      <mat-datepicker-toggle matSuffix [for]="timepicker"></mat-datepicker-toggle>
+      <mat-datepicker #timepicker></mat-datepicker>
+    </mat-form-field> -->
+    <!-- <input type="time" [(ngModel)]="selectedTime" (input)="onTimeChange($event)" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]"> -->
+    <!-- <app-time-wheel></app-time-wheel> -->
   </div>
   
-  <div *ngIf="frequency === 'weekly'">
+  <div *ngIf="idFrequencyTypes.value == 2">
+  <!-- <div *ngIf="frequency === 'weekly'"> -->
     <mat-form-field appearance="fill">
       <mat-label>Choose days of the week</mat-label>
-      <mat-select [(ngModel)]="selectedDays" multiple>
-        <mat-option *ngFor="let day of days" [value]="day">{{ day }}</mat-option>
+      <!-- <mat-select [(ngModel)]="selectedDays" multiple> -->
+        <mat-select (selectionChange)="onChangeDays($event)" multiple>
+        <mat-option *ngFor="let day of days" [value]="day.Id">{{ day.Desc }}</mat-option>
       </mat-select>
     </mat-form-field><br>
     <mat-form-field appearance="fill">
       <mat-label>Choose hours of the selected days</mat-label>
-      <mat-select [(ngModel)]="selectedHours" multiple>
-        <mat-option *ngFor="let hour of hours" [value]="hour">{{ hour }}</mat-option>
+      <!-- [(ngModel)]="selectedHours" -->
+      <mat-select multiple (selectionChange)="onChangeHours($event)">
+        <mat-option *ngFor="let hour of hours; let i = index;" [value]="i">{{ hour.Desc }}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
   
-  <div *ngIf="frequency === 'monthly'">
+  <div *ngIf="idFrequencyTypes.value == 3">
+  <!-- <div *ngIf="frequency === 'monthly'"> -->
     <mat-form-field appearance="fill">
       <mat-label>Choose date of the month</mat-label>
       <input matInput [matDatepicker]="startDatePicker" placeholder="Choose date">
@@ -103,16 +123,17 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Choose hours of the selected date</mat-label>
-      <mat-select [(ngModel)]="selectedHours" multiple>
+      <!-- <mat-select [(ngModel)]="selectedHours">
         <mat-option *ngFor="let hour of hours" [value]="hour">{{ hour }}</mat-option>
+      </mat-select> -->
+      <mat-select multiple (selectionChange)="onChangeHours($event)">
+        <mat-option *ngFor="let hour of hours; let i = index;" [value]="i">{{ hour.Desc }}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
 
-  
-
-  
-  <div *ngIf="frequency === 'yearly'">
+  <div *ngIf="idFrequencyTypes.value == 4">
+  <!-- <div *ngIf="frequency === 'yearly'"> -->
     <mat-form-field appearance="fill">
       <mat-label>Choose months of the year</mat-label>
       <mat-select [(ngModel)]="selectedMonths" multiple>
@@ -127,19 +148,22 @@
       </mat-form-field><br>
     <mat-form-field appearance="fill">
       <mat-label>Choose hours of the selected days</mat-label>
-      <mat-select [(ngModel)]="selectedHours" multiple>
+      <!-- <mat-select [(ngModel)]="selectedHours">
         <mat-option *ngFor="let hour of hours" [value]="hour">{{ hour }}</mat-option>
+      </mat-select> -->
+      <mat-select multiple (selectionChange)="onChangeHours($event)">
+        <mat-option *ngFor="let hour of hours; let i = index;" [value]="i">{{ hour.Desc }}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
+   <!-- </form> -->
  
   <br><br>
- 
+  <!-- <ejs-timepicker placeholder='Select a time' #timePicker (change)="onTimeChange($event)"></ejs-timepicker> -->
+  <!-- <br><br> -->
   <!-- <button type="submit">Add Target</button>
   <button  style="height: 5px; width: 15; background-color: darkkhaki;"   class="button button3" type="submit" >Add Target</button><br> -->
  
   <button class="btn btn1"  routerLink="/my-details" (click)="addTarget()" >הוסף</button>
   <!-- <button class="btn btn1" data-id="btn1">כפתור</button> -->
-
-  <!-- </form> -->
 </form>

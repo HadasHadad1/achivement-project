@@ -12,15 +12,21 @@ namespace WebApi.Controllers
     public class TargetController : ControllerBase
     {
         [HttpGet("GetAllTarget")]
-        public ActionResult<List<Target>> GetAll()
+        public ActionResult<List<TargetDto>> GetAll()
         {
-            return Ok(TargetFunction.getAllTarget());
+            return Ok(TargetDto.convertListFromDBtoDTO(TargetFunction.getAllTarget()));
         }
 
         [HttpGet("GetTargetByID/{id}")]
-        public ActionResult<Target> GetById(int id)
+        public ActionResult<TargetDto> GetById(int id)
         {
-            return Ok(TargetFunction.getTargetById(id));
+            return Ok(TargetDto.convertFromDBtoDTO(TargetFunction.getTargetById(id)));
+        }
+
+        [HttpGet("GetAllSatisticsByTz/{tz}")]
+        public ActionResult<List<Statistic>> GetAllSatisticsByTz(string tz)
+        {
+            return Ok(Statistic.convertListFromDBtoDTO(TargetFunction.getAllSatisticsByTz(tz)));
         }
 
         [HttpDelete("DeleteTarget/{id}")]
@@ -35,13 +41,13 @@ namespace WebApi.Controllers
             //הוספת יעד לDB
             TargetDto t1 = TargetDto.convertFromDBtoDTO(TargetFunction.addTarget(TargetDto.convertFromDTOtoDB(t)));
             //קבלת רשימת הימים ליעד
-            List<TargetDateDto> lt = GetTargetDateDto(t1);
+            //List<TargetDateDto> lt = GetTargetDateDto(t1);
             //הוספת הרשימה לDB
 
             //???????????/
             //יצירת הרשימה של ההתראות
             //הוספתם לDB
-            GetAlertDateDTO(t1);
+            //GetAlertDateDTO(t1);
             return Ok(t1);
         }
 

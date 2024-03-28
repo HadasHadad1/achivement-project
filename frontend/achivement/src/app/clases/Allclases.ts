@@ -57,7 +57,9 @@ export class AlertDate {
     constructor(
         public IdAlertDate?: number,
         public IdTargets?: number,
-        public Date?: string
+        public Date?: Date,
+        public Status?: Boolean,
+        public ExecutionDate?: Date,
     ){}
 }
 
@@ -102,7 +104,7 @@ export class AlertHour {
     constructor(
         public IdAlertHours?: number,
         public IdTargets?: number,
-        public IdAlertTypes?: number,
+        // public IdAlertTypes?: number,
         public Hour?: Date
     ){}
 }
@@ -233,5 +235,52 @@ export class User {
         public Pasword?: string,
         public Phone?: string,
         public Gender?: string
+    ){}
+}
+
+export class DaysInWeek {
+    constructor(
+        public Id?: number,
+        public Desc?: string,
+    ){}
+}
+
+export class HoursInDay {
+    constructor(
+        public Id?: number,
+        public Desc?: string,
+        // public Type?: string,
+        public Hour?: number,
+        public Minute?: number,
+    ){}
+}
+
+export class TargetDetails {
+    constructor(
+        public Id?: number,
+        public IdTarget?: number,
+        public Subject?: string,
+        public StartTime?: Date,
+        public EndTime?: Date,
+        public Color?: string,
+        public ExecutionDate?: Date,
+        public User?: User,
+        // public SeveralTimesAday?: number,
+        // public IdTargetsNavigation?: number
+    ){}
+}
+
+export class EmailDetails {
+    constructor(
+        public EmailTo?: string,
+        public Subject?: string,
+        public Body?: string,
+    ){}
+}
+
+export class Statistic {
+    constructor(
+        public label?: string,
+        public y?: number,
     ){}
 }

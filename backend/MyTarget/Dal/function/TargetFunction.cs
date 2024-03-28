@@ -1,4 +1,5 @@
 ﻿using Dal.models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,12 +16,18 @@ namespace Dal.function
             //ניגש למשתנה המחלקה
             //ונפעיל עליו שאילתא
             //list ולכן  יש לבצע המרה ל dbSet הרשימה היא מסוג
-            return db.Targets.ToList();
+            return db.Targets.Include(target => target.AlertDates).ToList();
+        }
+
+        public static List<Target> getAllSatisticsByTz(string tzUser)
+        {
+            return db.Targets.Where(target => target.TzUserNavigation.Tz.Equals(tzUser)).Include(t => t.Performences).Include(a => a.AlertDates).ToList();
         }
 
         public static Target getTargetById(int id)
         {
-            return db.Targets.Find(id);
+            var a = db.Targets.Where(target => target.IdTargets == id).Include(t => t.AlertDates).FirstOrDefault();
+            return a;
         }
 
         public static bool deleteTarget(int id)

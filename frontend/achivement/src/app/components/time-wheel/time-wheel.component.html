@@ -1,0 +1,20 @@
+<!-- <div class="time-wheel">
+    <div class="hour-selector" (scroll)="onScroll($event)">
+      <div *ngFor="let hour of hours" class="hour" [class.selected]="hour === selectedHour" (click)="selectHour(hour)">
+        {{ hour }}
+      </div>
+    </div>
+  </div> -->
+  <igx-time-picker #picker [(ngModel)]="today" [inputFormat]="'hh:mm'">
+    <igx-picker-toggle igxPrefix>
+        <igx-icon (click)="picker.toggle()">access_alarm</igx-icon>
+    </igx-picker-toggle>
+    <igx-hint>{{today.toLocaleString()}}</igx-hint>
+    <ng-template igxTimePickerActions>
+        <div class="action-buttons">
+            <button igxButton="flat" (click)="picker.cancelButtonClick()">cancel</button>
+            <button igxButton="flat" (click)="picker.okButtonClick()">done</button>
+            <button igxButton="flat" (click)="selectNow(picker)">now</button>
+        </div>
+    </ng-template>
+</igx-time-picker>

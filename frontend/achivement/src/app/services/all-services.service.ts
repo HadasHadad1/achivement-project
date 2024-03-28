@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AlertDate,AlertFrequencyType,AlertType,AlertHour, User,Target,Performence,Frequency,FrequencyType } from '../clases/Allclases';
+import { AlertDate,AlertFrequencyType,AlertType,AlertHour, User,Target,Performence,Frequency,FrequencyType, TargetDetails, EmailDetails, Statistic } from '../clases/Allclases';
 import {ForgetPassworsComponent} from '../components/forget-passwors/forget-passwors.component';
 
 @Injectable({
@@ -128,6 +128,11 @@ export class AllServicesService {
      {
         return this.http.get<Target>(`${this.myUrl}Target/getTargetById/${IdTargets}`)
      }
+
+     getAllSatisticsByTz(tz: string): Observable<Array<Statistic>> 
+     {
+        return this.http.get<Array<Statistic>>(`${this.myUrl}Target/GetAllSatisticsByTz/${tz}`)
+     }
   
      addTarget(target: Target): Observable<Target> 
      {
@@ -161,9 +166,9 @@ export class AllServicesService {
         return this.http.post<boolean>(`${this.myUrl}User/AddUser/`,user)
      }
 
-     updateUser(Tz:string):Observable<Array<User>>
+     updateUser(user:User):Observable<Array<User>>
      {
-        return this.http.put<Array<User>>(`${this.myUrl}User/updateUser/${Tz}`,{})
+        return this.http.put<Array<User>>(`${this.myUrl}User/updateUser`,user)
      }
 
      deleteUser(Tz:string):Observable<Array<User>>
@@ -173,6 +178,10 @@ export class AllServicesService {
 
      public sendMail(adressMail: string, subject: string, body: string): Observable<boolean> {
       return this.http.get<boolean>(`${this.myUrl}User/SendMail?emailTo=${adressMail}&subject=${subject}&body=${body}`)
+    }
+
+    public sendMailForgetPassword(adressMail: string, subject: string, body: string): Observable<boolean> {
+      return this.http.get<boolean>(`${this.myUrl}Email/SendMail?emailTo=${adressMail}&subject=${subject}&body=${body}`)
     }
     
     //בודק עם קיים מספר זהות-הפונקציה לא תקינה
@@ -198,14 +207,14 @@ postUser2(user: User): Observable<User> {
        'Content-Type': 'application/json'
      })
    };
-   return this.http.post<User>(`${this.myUrl}/PostUser`, user, httpOptions);
+   return this.http.post<User>(`${this.myUrl}PostUser`, user, httpOptions);
 }
 
    
 
      SignIn(Email:string):Observable<User>
      {
-      return this.http.get<User>(`${this.myUrl}/SignIn/${Email}`,{})
+      return this.http.get<User>(`${this.myUrl}User/SignIn/${Email}`,{})
      }
      //ובודקת אם שוים פונקציה שמקבלת מיל וסיסמא 
       //מזמנת באנגולר
@@ -213,5 +222,24 @@ postUser2(user: User): Observable<User> {
       //כן 
 
 
+      //AlertDate -
+     getAlertDateByUserId(Tz:string):Observable<Array<TargetDetails>>
+     {
+        return this.http.get<Array<TargetDetails>>(`${this.myUrl}AlertDate/GetAlertDateByUserID/${Tz}`,{})
+     }
+
+     getAlertDateByDateOfNow(DateNow: string):Observable<Array<AlertDate>>
+     {
+        return this.http.get<Array<AlertDate>>(`${this.myUrl}AlertDate/GetAlertDateByDateOfNow/${DateNow}`)
+     }
+
+     updateAlertDate(AlertDate: AlertDate):Observable<Boolean>
+     {
+        return this.http.put<Boolean>(`${this.myUrl}AlertDate/UpdateAlertDate/`,AlertDate)
+     }
+     
+     public sendReminderToEmail(detailsEmail: EmailDetails): Observable<boolean> {
+      return this.http.post<boolean>(`${this.myUrl}Email/SendReminderToEmail`, detailsEmail)
+    }
 
 }

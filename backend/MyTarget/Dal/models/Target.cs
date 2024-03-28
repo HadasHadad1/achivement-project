@@ -11,13 +11,13 @@ public partial class Target
 
     public string? Description { get; set; }
 
+    public int? IdFrequencyTypes { get; set; }
+
     public DateTime StartDate { get; set; }
 
     public DateTime? EndDate { get; set; }
 
     public int? SeveralTimesAday { get; set; }
-
-    public int? IdFrequencyTypes { get; set; }
 
     public virtual ICollection<AlertDate> AlertDates { get; set; } = new List<AlertDate>();
 

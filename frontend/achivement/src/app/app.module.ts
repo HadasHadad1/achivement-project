@@ -65,30 +65,47 @@ import { AboutComponent } from './components/about/about.component';
 // import { StatisticsComponent } from './components/statistics/statistics.component';
 // import { CalendarComponent } from './components/calendar/calendar.component';
 import { LuachShanaComponent } from './components/luach-shana/luach-shana.component';
-import { MyDetailsComponent } from './components/my-details/my-details.component';
+import { DialogEditStatusComponent, MyDetailsComponent } from './components/my-details/my-details.component';
 import { ForgetPassworsComponent } from './components/forget-passwors/forget-passwors.component';
 import {ScheduleModule, AgendaService, DayService, WeekService, WorkWeekService, MonthService, DragAndDropService, ResizeService } from '@syncfusion/ej2-angular-schedule';
 import { MatFormFieldModule } from '@angular/material/form-field';
-0
+import { TimeWheelComponent } from './components/time-wheel/time-wheel.component';
+import { 
+	IgxTimePickerModule,
+	IgxInputGroupModule,
+	IgxIconModule,
+	IgxButtonModule
+ } from "igniteui-angular";
+ import { DateTimePickerModule, TimePickerModule } from '@syncfusion/ej2-angular-calendars';
+
+ import * as CanvasJSAngularChart from '../assets/canvasjs.angular.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
+ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
+
 //I keep the new line
 @NgModule({
   declarations: [
     AppComponent,
+    CanvasJSChart,
     AddTargetComponent,
     SignInComponent,
     SignUpComponent,
     HomePageComponent,
     MenuComponent,
     AboutComponent,
-    // StatisticsComponent,
+    StatisticsComponent,
     // CalendarComponent,
     LuachShanaComponent,
-    
+    DialogEditStatusComponent,
     MyDetailsComponent,
      ForgetPassworsComponent,
+     TimeWheelComponent
   ],
 
-  providers: [AgendaService, DayService, WeekService, WorkWeekService, MonthService, DragAndDropService, ResizeService],
+  providers: [AgendaService, DayService, WeekService, WorkWeekService, MonthService, DragAndDropService, ResizeService,
+    // Ngo9BigBOggjHTQxAR8/V1NBaF5cXmZCekx3Qnxbf1x0ZFxMYVpbRXJPIiBoS35RckVgWHdccXVTR2VeWUV+
+    // { provide: 'sf-licenseKey', useValue: 'Ngo9BigBOggjHTQxAR8/V1NBaF5cXmZCekx3Qnxbf1x0ZFRGalxUTndWUj0eQnxTdEFjWn1fcXBRRmBdUkVyXg==' }
+  ],
   bootstrap: [AppComponent],
   imports: [
     BrowserModule,
@@ -150,7 +167,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     FormsModule ,// הוספת ה- FormsModule כאן
     ReactiveFormsModule, // הוספת הייבוא של ReactiveFormsModule למודול
     // CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
-    ScheduleModule//module from the ej2-angular-schedule package
+    ScheduleModule,//module from the ej2-angular-schedule package
+    TimePickerModule,//module from the ej2-angular-calendars package
+  //  Time
+  IgxTimePickerModule,
+	IgxInputGroupModule,
+	IgxIconModule,
+	IgxButtonModule
   ]
   
 })

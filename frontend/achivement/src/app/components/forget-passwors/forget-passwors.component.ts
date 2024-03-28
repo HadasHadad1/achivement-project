@@ -26,6 +26,8 @@ newpassword1=""
 newpassword2=""
 tz:string=""
 user:User=new User();
+hide = true;
+hide2 = true;
 
   constructor(public s: AllServicesService,private router: Router) { 
 
@@ -34,7 +36,7 @@ user:User=new User();
   }
   SEmail(){ 
     //שליחת המספר הרנדומלי למייל
-       this.s.sendMail(this.email,":היא Achivement סיסמתך לאתר ",this.password).subscribe((res: any) => {
+       this.s.sendMailForgetPassword(this.email,":היא Achivement סיסמתך לאתר ",this.password).subscribe((res: any) => {
       if (res)
       {
         this.degel1=false
@@ -74,10 +76,10 @@ user:User=new User();
         this.user = d;
         console.log(this.user, "user")
         this.user.Pasword=this.newpassword1
-        this.s.postUser2(this.user).subscribe
+        this.s.updateUser(this.user).subscribe
         (() => {
           alert("הסיסמא התעדכנה בהצלחה")
-          this.router.navigate(['/sing-in/']);
+          this.router.navigate(['/signIn/']);
         },
           () => { alert("שגיאה בגישה למשתמש") })
       },
@@ -87,7 +89,6 @@ user:User=new User();
   checkTz(){
     alert('cvt')
   }
-
 
 }
 

@@ -1,4 +1,5 @@
 ﻿using Dal.models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,16 @@ namespace Dal.function
         public static AlertDate getAlertDateById(int id)
         {
             return db.AlertDates.Find(id);
+        }
+
+        public static List<AlertDate> getAlertDateByDateOfNow(DateTime dateNow)
+        {
+            return db.AlertDates.Where(a => a.Date == dateNow).Include(a => a.IdTargetsNavigation).ThenInclude(h => h.TzUserNavigation).ToList();
+        }
+
+        public static List<AlertDate> getAlertDatesByUserId(string userId)
+        {
+            return db.AlertDates.Where(a=> a.IdTargetsNavigation.TzUser.Equals(userId)).Include(a => a.IdTargetsNavigation).ThenInclude(h => h.AlertHours).ToList();
         }
 
         public static bool deleteAlertDate(int id)
@@ -59,6 +70,8 @@ namespace Dal.function
                 aD.IdAlertDate = alertDate.IdAlertDate;
                 aD.IdTargets = alertDate.IdTargets;
                 aD.Date = alertDate.Date;
+                aD.Status = alertDate.Status;
+                aD.ExecutionDate = alertDate.ExecutionDate;
 
                 db.SaveChanges();
                 return true;

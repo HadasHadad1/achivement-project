@@ -7,6 +7,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { AboutComponent } from './components/about/about.component';
 import { MyDetailsComponent } from './components/my-details/my-details.component';
 import {ForgetPassworsComponent} from './components/forget-passwors/forget-passwors.component'
+import { StatisticsComponent } from './components/statistics/statistics.component';
 
 const routes: Routes = [
    {path:'', component:SignInComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
    {path:'about', component:AboutComponent},
    {path:'about', component:AboutComponent},
    {path:'my-details', component:MyDetailsComponent},
+   {path:'statistics', component:StatisticsComponent},
    {path:'my-forget-passwors', component:ForgetPassworsComponent},
  
 ];

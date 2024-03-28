@@ -10,9 +10,18 @@ export class LocaluserService {
   constructor() { }
   
     // משתנה זה מכיל את פרטי המשתמש הנוכחי
-   private user:User = new User();
-   public getLocalUser():User{return this.user;}
-   public setLocalUser(u:User){this.user=u;}
+   private user:User | any = null;
+   public getLocalUser():User{
+    if(this.user == null && sessionStorage.getItem("user")){
+        let a:any = sessionStorage.getItem("user");
+        this.user = JSON.parse(a);
+    }
+    return this.user;
+  }
+   public setLocalUser(u:User){
+    sessionStorage.setItem("user", JSON.stringify(u));
+    this.user=u;
+  }
   
   //  משתנה זה מכיל את פרטי היעד שנבחר על ידי המשתמש
    private yaad:Target = new Target();

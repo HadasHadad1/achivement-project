@@ -10,10 +10,13 @@ namespace Dto
     {
         public int IdAlertDate { get; set; }
 
-        public int? IdTargets { get; set; }
+        public int IdTargets { get; set; }
 
-        public DateTime ? Date { get; set; }
+        public DateTime Date { get; set; }
 
+        public bool Status { get; set; }
+
+        public DateTime? ExecutionDate { get; set; }
 
         //פונקציות המרה
         public static AlertDateDto convertFromDBtoDTO(AlertDate aD)
@@ -23,6 +26,8 @@ namespace Dto
             aDDto.IdAlertDate = aD.IdAlertDate;
             aDDto.IdTargets = aD.IdTargets;
             aDDto.Date = aD.Date;
+            aDDto.Status = aD.Status;
+            aDDto.ExecutionDate = aD.ExecutionDate;
             return aDDto;
         }
 
@@ -33,6 +38,8 @@ namespace Dto
             aD.IdAlertDate = aDDto.IdAlertDate;
             aD.IdTargets = aDDto.IdTargets;
             aD.Date = aDDto.Date;
+            aD.Status = aDDto.Status;
+            aD.ExecutionDate = aDDto.ExecutionDate;
             return aD;
         }
 

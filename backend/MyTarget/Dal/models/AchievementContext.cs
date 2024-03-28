@@ -33,66 +33,66 @@ public partial class AchievementContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=CND2014BGH;Database=achievement; Trusted_Connection=True;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Server=.;Database=achievement;Trusted_Connection=True;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<AlertDate>(entity =>
         {
-            entity.HasKey(e => e.IdAlertDate).HasName("PK__AlertDat__039FE939F4F405A0");
+            entity.HasKey(e => e.IdAlertDate).HasName("PK__tmp_ms_x__039FE939E0C4C944");
 
-            entity.Property(e => e.Date).HasMaxLength(20);
+            entity.Property(e => e.Date).HasColumnType("datetime");
+            entity.Property(e => e.ExecutionDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.IdTargetsNavigation).WithMany(p => p.AlertDates)
                 .HasForeignKey(d => d.IdTargets)
-                .HasConstraintName("FK__AlertDate__IdTar__5AEE82B9");
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__AlertDate__IdTar__74AE54BC");
         });
 
         modelBuilder.Entity<AlertHour>(entity =>
         {
-            entity.HasKey(e => e.IdAlertHours).HasName("PK__AlertHou__8FDF869DE4B4AB9E");
-
-            entity.Property(e => e.Hour).HasColumnType("datetime");
+            entity.HasKey(e => e.IdAlertHours).HasName("PK__AlertHou__8FDF869DA77AD687");
 
             entity.HasOne(d => d.IdAlertTypesNavigation).WithMany(p => p.AlertHours)
                 .HasForeignKey(d => d.IdAlertTypes)
-                .HasConstraintName("FK__AlertHour__IdAle__5812160E");
+                .HasConstraintName("FK__AlertHour__IdAle__49C3F6B7");
 
             entity.HasOne(d => d.IdTargetsNavigation).WithMany(p => p.AlertHours)
                 .HasForeignKey(d => d.IdTargets)
-                .HasConstraintName("FK__AlertHour__IdTar__571DF1D5");
+                .HasConstraintName("FK__AlertHour__IdTar__5FB337D6");
         });
 
         modelBuilder.Entity<AlertType>(entity =>
         {
-            entity.HasKey(e => e.IdAlertTypes).HasName("PK__AlertTyp__43571A530A81121C");
+            entity.HasKey(e => e.IdAlertTypes).HasName("PK__AlertTyp__43571A531FECE170");
 
             entity.Property(e => e.Description).HasMaxLength(20);
         });
 
         modelBuilder.Entity<Frequency>(entity =>
         {
-            entity.HasKey(e => e.IdFrequency).HasName("PK__Frequenc__D5B70EFF351E02E2");
+            entity.HasKey(e => e.IdFrequency).HasName("PK__Frequenc__D5B70EFFF0B4747F");
 
             entity.ToTable("Frequency");
 
-            entity.Property(e => e.Note).HasMaxLength(20);
+            entity.Property(e => e.Note).HasMaxLength(50);
 
             entity.HasOne(d => d.IdTargetsNavigation).WithMany(p => p.Frequencies)
                 .HasForeignKey(d => d.IdTargets)
-                .HasConstraintName("FK__Frequency__IdTar__3E52440B");
+                .HasConstraintName("FK__Frequency__IdTar__5CD6CB2B");
         });
 
         modelBuilder.Entity<FrequencyType>(entity =>
         {
-            entity.HasKey(e => e.IdFrequencyTypes).HasName("PK__Frequenc__9467741D9F9FC2AA");
+            entity.HasKey(e => e.IdFrequencyTypes).HasName("PK__Frequenc__9467741D8040EBF5");
 
             entity.Property(e => e.Description).HasMaxLength(20);
         });
 
         modelBuilder.Entity<Performence>(entity =>
         {
-            entity.HasKey(e => e.IdPerformence).HasName("PK__Performe__120B077AE7E5D525");
+            entity.HasKey(e => e.IdPerformence).HasName("PK__Performe__120B077A703004B5");
 
             entity.ToTable("Performence");
 
@@ -100,12 +100,13 @@ public partial class AchievementContext : DbContext
 
             entity.HasOne(d => d.IdTargetsNavigation).WithMany(p => p.Performences)
                 .HasForeignKey(d => d.IdTargets)
-                .HasConstraintName("FK__Performen__IdTar__4222D4EF");
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Performen__IdTar__6383C8BA");
         });
 
         modelBuilder.Entity<Target>(entity =>
         {
-            entity.HasKey(e => e.IdTargets).HasName("PK__Targets__E387358554990877");
+            entity.HasKey(e => e.IdTargets).HasName("PK__tmp_ms_x__E387358564A5B034");
 
             entity.Property(e => e.Description).HasMaxLength(20);
             entity.Property(e => e.EndDate).HasColumnType("date");
@@ -115,19 +116,19 @@ public partial class AchievementContext : DbContext
 
             entity.HasOne(d => d.IdFrequencyTypesNavigation).WithMany(p => p.Targets)
                 .HasForeignKey(d => d.IdFrequencyTypes)
-                .HasConstraintName("FK_Targets_FrequencyTypes");
+                .HasConstraintName("FK__Targets__IdFrequ__619B8048");
 
             entity.HasOne(d => d.TzUserNavigation).WithMany(p => p.Targets)
                 .HasForeignKey(d => d.TzUser)
-                .HasConstraintName("FK__Targets__TzUser__398D8EEE");
+                .HasConstraintName("FK__Targets__TzUser__60A75C0F");
         });
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.Tz).HasName("PK__Users__3214E4516944DEDF");
+            entity.HasKey(e => e.Tz).HasName("PK__Users__3214E45180123B8D");
 
             entity.Property(e => e.Tz).HasMaxLength(9);
-            entity.Property(e => e.Email).HasMaxLength(20);
+            entity.Property(e => e.Email).HasMaxLength(50);
             entity.Property(e => e.FirstName).HasMaxLength(10);
             entity.Property(e => e.Gender).HasMaxLength(8);
             entity.Property(e => e.LastName).HasMaxLength(10);

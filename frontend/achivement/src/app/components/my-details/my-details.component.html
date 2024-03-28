@@ -1,10 +1,29 @@
-<div style="text-align:center;">
+<div style="text-align:center;" *ngIf="eventData.dataSource">
 <!-- <form style="text-align: center;" >  -->
-  <h3>אזור אישי</h3>
+  <h3>אזור אישי {{ this.usernow.FirstName}} {{this.usernow.LastName}}</h3>
   <div style="margin-left: auto; margin-right: auto; width: 80%;">
-  <ejs-schedule  #scheduleObj (eventClick)="onEventClick($event)" (eventSave)="onEventSave($event)" 
-  (popupOpen)="onPopupOpen($event)" (actionComplete)="onActionComplete($event)"
-   [eventSettings]="eventData" [selectedDate]="currentDate" timezone="UTC" [currentView]="newViewMode"></ejs-schedule>
+  <ejs-schedule #scheduleObj (eventClick)="onEventClick($event)" (eventSave)="onEventSave($event)" 
+  (popupOpen)="onPopupOpen($event)" (actionComplete)="onActionComplete($event)" (eventRendered)='onEventRendered($event)'
+   [eventSettings]="eventData" [selectedDate]="currentDate" timezone="UTC" [currentView]="newViewMode">
+   <!-- <e-events>
+    <ng-template #eventSettingsTemplate let-data>
+      <div class="custom-event" [ngStyle]="{ 'background-color': data.Color }">
+        {{ data.Subject }}
+      </div>
+    </ng-template>
+  </e-events> -->
+  <!-- <e-events>
+    <ng-template #eventSettingsTemplate let-data>
+  <e-event-settings [subject]="data.Subject" [startTime]="data.StartTime" [endTime]="data.EndTime" [color]="data.Color">
+  </e-event-settings>
+  </ng-template>
+  </e-events> -->
+  <!-- <ng-template #eventSettingsTemplate let-data>
+    <div class="event-item" [ngStyle]="{ 'background-color': data.Color }">
+      {{ data.Subject }}
+    </div>
+  </ng-template> -->
+  </ejs-schedule>
   </div>
 
      <!-- <h1>האזור האישי</h1>
@@ -50,7 +69,6 @@
     </div>
     <br> 
      -->
-     <button class="custom-button" routerLink="/addTarget">הוסף יעד</button>
-
+     <button type="button" class="custom-button" routerLink="/addTarget">הוסף יעד</button>
 <!-- </form> -->
 </div>

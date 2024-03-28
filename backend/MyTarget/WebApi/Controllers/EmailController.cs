@@ -30,5 +30,13 @@ namespace WebApi.Controllers
             return Ok(EmailFunction.SendSimpleEmail(emailTo, subject, body));
         }
 
+        //שליחת תזכורת למייל
+        [HttpPost]
+        [Route("SendReminderToEmail")]
+        public ActionResult<bool> SendReminderToEmail(EmailDto detailsEmail)
+        {
+            return Ok(EmailFunction.SendSimpleEmail(detailsEmail.EmailTo, detailsEmail.Subject, detailsEmail.Body));
+        }
+
     }
 }

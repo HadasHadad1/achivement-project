@@ -17,12 +17,14 @@ namespace Dto
         public int? SeveralTimesAday { get; set; }
 
         public int? IdFrequencyTypes { get; set; }
+
+        public virtual ICollection<AlertDateDto>? AlertDates { get; set; }
         //מערך של:
         //או ימים בשבוע
         //או ימים בחודש
         //או תאריכים בשנה
         //או ריק
-        public List<string> listD { get; set; }
+        public List<string>? listD { get; set; }
 
         //פונקציות המרה
         public static TargetDto convertFromDBtoDTO(Target t)
@@ -36,6 +38,7 @@ namespace Dto
             tDto.EndDate = t.EndDate;
             tDto.SeveralTimesAday = t.SeveralTimesAday;
             tDto.IdFrequencyTypes = t.IdFrequencyTypes;
+            tDto.AlertDates = AlertDateDto.convertListFromDBtoDTO(t.AlertDates.ToList());
             return tDto;
         }
 
@@ -50,7 +53,7 @@ namespace Dto
             t.EndDate = tDto.EndDate;
             t.SeveralTimesAday = tDto.SeveralTimesAday;
             t.IdFrequencyTypes = tDto.IdFrequencyTypes;
-
+            t.AlertDates = AlertDateDto.convertListFromDTOtoDB(tDto.AlertDates.ToList());
             return t;
         }
 

@@ -3,9 +3,15 @@ body {
 }
 
 .navbar {
-    background-color: transparent !important; /* מוחק את הרקע */
+    /* background-color: transparent !important;  */
+    /* מוחק את הרקע */
     border: none; /* מוחק את הגבולות */
     color: black !important;
+    z-index: 2000000000;
+    background-color: #bf746f !important;
+    position: fixed;
+    width: 100%;
+    top: 0;
 }
 a{
     color: black !important;

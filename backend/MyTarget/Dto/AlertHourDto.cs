@@ -15,7 +15,7 @@ namespace Dto
 
         public int? IdAlertTypes { get; set; }
 
-        public DateTime? Hour { get; set; }
+        public TimeSpan? Hour { get; set; }
 
 
         //פונקציות המרה

@@ -11,7 +11,7 @@ public partial class Performence
 
     public DateTime? ExecutionDate { get; set; }
 
-    public int? CountPerformence { get; set; }
+    public int CountPerformence { get; set; }
 
-    public virtual Target? IdTargetsNavigation { get; set; }
+    public virtual Target IdTargetsNavigation { get; set; } = null!;
 }

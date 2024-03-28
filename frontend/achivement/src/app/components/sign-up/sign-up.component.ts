@@ -24,7 +24,7 @@ export class SignUpComponent {
   constructor(public user_ser: AllServicesService, private router: Router) { }
   //יצירת טופס דינאמי 
   public SignUpForm: FormGroup | undefined;
-  Gender: string = "זכר";
+  Gender: string = "נקבה";
   Error: string = "";
   submitted = false;
   matcher = new MyErrorStateMatcher();
@@ -43,7 +43,7 @@ export class SignUpComponent {
         Email:new FormControl("", [Validators.required, Validators.email]),
         Pasword:new FormControl("", [Validators.required,Validators.min(1)]),
         Phone:new FormControl("", [Validators.required,Validators.min(10)]), 
-        Gender:new FormControl("", [Validators.required])
+        Gender:new FormControl("נקבה", [Validators.required])
       }
     )
   }
@@ -83,7 +83,7 @@ export class SignUpComponent {
         this.Error = "ארעה תקלה זמנית אנא נסה שנית מאוחר יותר";
       }
     },()=>{
-        this.router.navigate(['/sing-in/']);
+        this.router.navigate(['/signIn/']);
         console.log('המשתמש נרשם בהצלחה!');
         alert('המשתמש נרשם בהצלחה!')
     })

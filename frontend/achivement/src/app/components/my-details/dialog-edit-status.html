@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>{{target?.Subject}} - שינוי סטטוס יעד</h2>
+<mat-dialog-content>
+  <span>האם היעד התבצע?</span>
+  <!-- <form [formGroup]="editTarget!"> -->
+    <!-- <mat-form-field> -->
+    <section class="example-section">
+        <mat-checkbox [(ngModel)]="target.Status">היעד בוצע</mat-checkbox>
+        <!-- <mat-checkbox formControlName="Status">היעד בוצע</mat-checkbox> -->
+    </section>
+    <!-- <span *ngIf="target.Status">תאריך ביצוע: {{target.ExcutionDate}}</span> -->
+        <!-- <mat-label>המשימה בוצעה</mat-label>
+        <input matInput [(ngModel)]="target.Status"> -->
+    <!-- </mat-form-field> -->
+  <!-- </form> -->
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">ביטול</button>
+  <!-- [mat-dialog-close]="target.Status"  -->
+  <button mat-button cdkFocusInitial [mat-dialog-close]="target">שמור</button>
+</mat-dialog-actions>

@@ -13,7 +13,7 @@ import { MatInputModule } from '@angular/material/input';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
-   hide = true;
+  hide = true;
   SignInForm!: FormGroup;
   usernow:User = new User()
   id: string = ''
@@ -62,22 +62,36 @@ export class SignInComponent implements OnInit {
    
   // }
   foundUser() {
-    this.userService.getUserById(this.id).subscribe
+    // this.userService.getUserById(this.id).subscribe
+    //   (d => {
+    //     this.usernow = d;
+    //     console.log(this.usernow, "הצלחה")
+    //     if (this.usernow !== null)
+    //       if (this.usernow.Pasword== this.password) {
+    //         alert("שלום ל:" + this.usernow.FirstName + " " + this.usernow.LastName);
+    //         this.ls.setLocalUser(d);
+    //         this.router.navigate(['/Menu/']);
+    //       }
+    //       else
+    //         alert("אחד מהנתונים שהזנת שגויים");
+    //   },
+    //   err => { alert("שגיאה בגישה למשתמשים") })
+    this.userService.SignIn(this.getEmail?.value).subscribe
       (d => {
         this.usernow = d;
         console.log(this.usernow, "הצלחה")
         if (this.usernow !== null)
-          if (this.usernow.Pasword== this.password) {
+          if (this.usernow.Pasword== this.getPassword?.value) {
             alert("שלום ל:" + this.usernow.FirstName + " " + this.usernow.LastName);
             this.ls.setLocalUser(d);
-            this.router.navigate(['/Menu/']);
+            this.router.navigate(['/my-details/']);
           }
           else
             alert("אחד מהנתונים שהזנת שגויים");
       },
-
-        err => { alert("שגיאה בגישה למשתמשים") })
+      err => { alert("שגיאה בגישה למשתמשים") })
   }
+
   ForgetPasword(){
     this.router.navigate(['/my-forget-passwors/']);
   }

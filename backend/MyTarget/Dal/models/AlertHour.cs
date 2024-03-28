@@ -11,7 +11,7 @@ public partial class AlertHour
 
     public int? IdAlertTypes { get; set; }
 
-    public DateTime? Hour { get; set; }
+    public TimeSpan? Hour { get; set; }
 
     public virtual AlertType? IdAlertTypesNavigation { get; set; }
 

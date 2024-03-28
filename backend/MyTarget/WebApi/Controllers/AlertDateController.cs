@@ -21,6 +21,17 @@ namespace WebApi.Controllers
         {
             return Ok(AlertDateFunction.getAlertDateById(id));
         }
+        [HttpGet("GetAlertDateByDateOfNow/{dateNow}")]
+        public ActionResult<List<TargetDetails>> GetAlertDateByDateOfNow(DateTime dateNow)
+        {
+            return Ok(TargetDetails.convertListFromDBtoDTO(AlertDateFunction.getAlertDateByDateOfNow(dateNow)));
+        }
+
+        [HttpGet("GetAlertDateByUserID/{userId}")]
+        public ActionResult<List<TargetDetails>> GetAlertDateByUserID(string userId)
+        {
+            return Ok(TargetDetails.convertListFromDBtoDTO(AlertDateFunction.getAlertDatesByUserId(userId)));
+        }
 
         [HttpDelete("DeleteAlertDate/{id}")]
         public ActionResult<bool> Remove(int id)
