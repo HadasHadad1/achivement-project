@@ -47,6 +47,11 @@ namespace Dal.function
         {
             db.Targets.Add(target);
             db.SaveChanges();
+            var per = new Performence();
+            per.IdTargets = target.IdTargets;
+            per.CountPerformence = 0;
+            db.Performences.Add(per);
+            db.SaveChanges();
             return target;
         }
 

@@ -96,6 +96,21 @@ export class DateService {
     return datesArray;
   }
 
+  getDatesForYearsWithTimes(startDate: Date, endDate: Date, times: { hour: number, minute: number }[]): Date[] {
+    const datesWithTimes: Date[] = [];
+    
+    const currentDate = new Date(startDate);
+    while (currentDate <= endDate) {
+        for (const time of times) {
+          const newDate = new Date(currentDate);
+          newDate.setHours(time.hour, time.minute, 0, 0);
+          datesWithTimes.push(newDate);
+        }
+        currentDate.setFullYear(currentDate.getFullYear() + 1);
+      }
+    return datesWithTimes;
+  }
+
   getDatesForYears(startDate: Date, endDate: Date): Date[] {
     const datesArray: Date[] = [];
     const currentDate = new Date(startDate);

@@ -143,12 +143,12 @@
         <mat-option *ngFor="let month of months" [value]="month">{{ month }}</mat-option>
       </mat-select>
     </mat-form-field><br>
-    <mat-form-field appearance="fill">
+    <!-- <mat-form-field appearance="fill">
         <mat-label>Choose days of the selected months</mat-label>
         <input matInput [matDatepicker]="dayPicker" placeholder="Choose date">
         <mat-datepicker-toggle matSuffix [for]="dayPicker"></mat-datepicker-toggle>
         <mat-datepicker #dayPicker></mat-datepicker>
-      </mat-form-field><br>
+      </mat-form-field><br> -->
     <mat-form-field appearance="fill">
       <mat-label>Choose hours of the selected days</mat-label>
       <!-- <mat-select [(ngModel)]="selectedHours">

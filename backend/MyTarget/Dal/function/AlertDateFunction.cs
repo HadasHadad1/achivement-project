@@ -70,6 +70,18 @@ namespace Dal.function
                 aD.IdAlertDate = alertDate.IdAlertDate;
                 aD.IdTargets = alertDate.IdTargets;
                 aD.Date = alertDate.Date;
+                var per = db.Performences.Where(p => p.IdTargets == aD.IdTargets).FirstOrDefault();
+                per.ExecutionDate = new DateTime();
+                if (aD.Status && alertDate.Status== false)
+                {
+                    //אם זה טרו להוריד ממספר הביצועים
+                    per.CountPerformence = per.CountPerformence - 1;
+                }
+                else if(aD.Status == false && alertDate.Status)
+                {
+                    //אם משנים לטרו אז להעלות במספר הביצועים
+                    per.CountPerformence = per.CountPerformence + 1;
+                }
                 aD.Status = alertDate.Status;
                 aD.ExecutionDate = alertDate.ExecutionDate;
 

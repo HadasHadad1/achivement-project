@@ -189,11 +189,17 @@ export class AddTargetComponent implements OnInit {
         // break;
         case 1: dates = this.generateDatesWithTimes(this.startDate.value, this.endDate.value, this.selectedHours);
         break;
-        case 2: dates = this.generateDatesForWeek(this.startDate.value, this.endDate.value, this.selectedDays);
+        // case 2: dates = this.generateDatesForWeek(this.startDate.value, this.endDate.value, this.selectedDays);
+        // break;
+        case 2: dates = this.generateDatesForWeekWithTimes(this.startDate.value, this.endDate.value, this.selectedDays, this.selectedHours);
         break;
-        case 3: dates = this.generateDatesForMonths(this.startDate.value, this.endDate.value);
+        // case 3: dates = this.generateDatesForMonths(this.startDate.value, this.endDate.value);
+        // break;
+        case 3: dates = this.generateDatesForMonthsWithTimes(this.startDate.value, this.endDate.value, this.selectedHours);
         break;
-        case 4: dates = this.generateDatesForYears(this.startDate.value, this.endDate.value);
+        // case 4: dates = this.generateDatesForYears(this.startDate.value, this.endDate.value);
+        // break;
+        case 4: dates = this.generateDatesForYearsWithTimes(this.startDate.value, this.endDate.value, this.selectedHours);
         break;
       }
       console.log(dates);
@@ -281,12 +287,24 @@ export class AddTargetComponent implements OnInit {
     return this.dateService.getDatesInRange(startDate, endDate);
   }
 
+  generateDatesForMonthsWithTimes(startDate: Date, endDate: Date, times: {hour: number; minute: number;}[]): Date[] {
+    return this.dateService.getDatesForMonthsWithTime(startDate, endDate, times);
+  }
+
   generateDatesForMonths(startDate: Date, endDate: Date): Date[] {
     return this.dateService.getDatesForMonths(startDate, endDate);
   }
 
+  generateDatesForWeekWithTimes(startDate: Date, endDate: Date, datesArray: number[], times: {hour: number; minute: number;}[]): Date[] {
+    return this.dateService.getDatesForWeekWithTimes(startDate, endDate,datesArray, times);
+  }
+
   generateDatesForWeek(startDate: Date, endDate: Date, datesArray: number[]): Date[] {
     return this.dateService.getDatesForWeek(startDate, endDate, datesArray);
+  }
+
+  generateDatesForYearsWithTimes(startDate: Date, endDate: Date, times: {hour: number; minute: number;}[]): Date[] {
+    return this.dateService.getDatesForYearsWithTimes(startDate, endDate, times);
   }
 
   generateDatesForYears(startDate: Date, endDate: Date): Date[] {
