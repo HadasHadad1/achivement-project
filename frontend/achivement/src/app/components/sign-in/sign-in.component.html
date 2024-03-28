@@ -29,12 +29,11 @@
 </div> -> --> 
 <!-- <app-menu></app-menu> -->
 
-<div>
+<div class="containerSignIn">
+  <span style="font-size: 35px;"><b>כניסה</b></span>
   <p>לכניסה לאתר הכנס מייל וסיסמא</p><br>
   
   <form [formGroup]="SignInForm!" (ngSubmit)="foundUser()">
- 
-
     <!-- מייל -->
     <div class="example-container">
       <mat-form-field>
@@ -55,14 +54,18 @@
       </mat-form-field>
     </div>
 
+    <!-- <button class="custom-button" routerLink="/signUp">עוד לא נרשמת? להרשמה</button> -->
+    <span>עוד לא נרשמת? <a [routerLink]="['/signUp']">להרשמה</a></span>
+
+    <div class="buttonSignIn">
+    <button style="width: 160px;" type="button" class="custom-button" (click)="ForgetPasword()">שכחתי סיסמא</button>
     <!-- כפתור כניסה -->
     <!-- <button mat-raised-button color="primary" type="submit">כניסה</button> -->
-    <input type="submit" value="כניסה" class="custom-button" [disabled]="!SignInForm!.valid">
+    <input type="submit" value="כניסה" class="custom-button" [disabled]="!SignInForm!.valid"/>
+    </div>
     <!-- <button class="custom-button" routerLink="/my-details">כניסה</button> -->
-
     <!-- לינק לעמוד הרישום -->
-    <button class="custom-button" routerLink="/signUp">הרשמה</button>
-    <button style="width: 140px;" type="button" class="custom-button" (click)="ForgetPasword()">שכחתי סיסמא</button>
+    
     <!-- <button class="custom-button"><a routerLink="/home">לדף הבית</a></button> -->
 
 

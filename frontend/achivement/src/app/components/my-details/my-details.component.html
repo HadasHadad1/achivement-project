@@ -1,6 +1,10 @@
 <div style="text-align:center;" *ngIf="eventData.dataSource">
 <!-- <form style="text-align: center;" >  -->
-  <h3>אזור אישי {{ this.usernow.FirstName}} {{this.usernow.LastName}}</h3>
+  <div class="headerMyDetails"> 
+  <div style="width: 10%;"></div>
+  <h4 style="margin-bottom: 10px;">אזור אישי {{ this.usernow.FirstName}} {{this.usernow.LastName}}</h4>
+  <button type="button" class="custom-button" routerLink="/addTarget">הוסף יעד</button>
+  </div>
   <div style="margin-left: auto; margin-right: auto; width: 80%;">
   <ejs-schedule #scheduleObj (eventClick)="onEventClick($event)" (eventSave)="onEventSave($event)" 
   (popupOpen)="onPopupOpen($event)" (actionComplete)="onActionComplete($event)" (eventRendered)='onEventRendered($event)'
@@ -69,6 +73,6 @@
     </div>
     <br> 
      -->
-     <button type="button" class="custom-button" routerLink="/addTarget">הוסף יעד</button>
+     <!-- <button type="button" class="custom-button" routerLink="/addTarget">הוסף יעד</button> -->
 <!-- </form> -->
 </div>

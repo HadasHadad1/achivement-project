@@ -23,6 +23,7 @@ background-color:rgba(255, 255, 255,0.5);
 border-radius: 10px;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* הצללה */
 text-align: center;
+direction: rtl;
 }
 
 
@@ -32,6 +33,10 @@ text-align: center;
   flex-direction: row; /* כיוון השורות */
   align-items: center; /* מיון אופקי במרכז */
   margin-bottom: 50px; /* רווח בין השדות */
+}
+
+.mat-mdc-form-field{
+  display: flex !important;
 }
 
 /* סגנון לתוויות השדות */
@@ -60,19 +65,20 @@ text-align: center;
 
 /* סגנון לכפתור */
 
-/*.custom-button {
+.custom-button {
   border-radius: 15px;
   font-weight: bold;
   font-size: 20px; /* גודל הגופן */
-  /* padding: 15px 20px; /* רווחים בין הכפתור לתוכן*/ 
-  /* width: 200px; רוחב הכפתור בפיקסלים */ */
+  padding: 15px 20px; /* רווחים בין הכפתור לתוכן 
+  width: 200px; /*רוחב הכפתור בפיקסלים */
    /* צבע הטקסט */
-  /* border:#000; מחיקת גבולות */
-  /* cursor: pointer; שינוי לסמן העכבר */
-  /* size:300px;
-  background-color: #ff5722; צבע מותאם אישית */
-  /* color: rgb(2, 2, 2); /* צבע טקסט  */
-/* }*/ */
+   border:#000; /*מחיקת גבולות */
+  cursor: pointer; /*שינוי לסמן העכבר */
+  size:300px;
+  background-color: #ff5722; /*צבע מותאם אישית */
+  color: rgb(2, 2, 2); /* צבע טקסט  */
+  margin: 5px;
+}
 
 /* .custom-button {
   background-color: #ff5722; /* צבע מותאם אישית */
@@ -113,3 +119,19 @@ text-align: center;
   transform: scale(0, 0);
   opacity: 0;
 }
+
+.containerSignIn{
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  direction: rtl;
+}
+
+.custom-button-password{
+  background-color: 000;
+  text-decoration: solid;
+}
+

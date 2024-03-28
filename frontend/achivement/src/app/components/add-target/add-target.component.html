@@ -10,7 +10,10 @@
  <!-- <br><br>    -->
  
   <!-- <AddTargetForm [formGroup]="AddTargetForm!" (ngSubmit)=" addTarget()"> -->
-<form [formGroup]="AddTargetForm!" (ngSubmit)=" addTarget()">
+<div class="form">
+  <span style="font-size: 35px;"><b>הוספת יעד</b></span>
+  <br/><br/><br/>
+<form [formGroup]="AddTargetForm!" (ngSubmit)=" addTarget()" class="TargetForm">
 
  <!-- <div>  -->
 
@@ -163,7 +166,9 @@
   <!-- <br><br> -->
   <!-- <button type="submit">Add Target</button>
   <button  style="height: 5px; width: 15; background-color: darkkhaki;"   class="button button3" type="submit" >Add Target</button><br> -->
- 
-  <button class="btn btn1"  routerLink="/my-details" (click)="addTarget()" >הוסף</button>
+  
+  <!-- <button class="btn btn1"  routerLink="/my-details" (click)="addTarget()" >הוסף</button> -->
+  <button class="custom-button"  routerLink="/my-details" (click)="addTarget()" >הוסף</button>
   <!-- <button class="btn btn1" data-id="btn1">כפתור</button> -->
 </form>
+</div>

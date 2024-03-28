@@ -6,14 +6,29 @@
   }
 
 .form {
-  width: 100%;
+  /* width: 100%;
   max-width: 600px; /* רוחב מקסימלי של הטופס */
-  margin: 0 auto; /* מרכז את הטופס באופן אופקי */
-  padding: 20px;
+ /* margin: 0 auto; /* מרכז את הטופס באופן אופקי */
+ /* padding: 20px;
   background-color:rgba(255, 255, 255,0.5);
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* הצללה */
-  text-align: center;
+  
+
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 600px; /* רוחב מקסימלי של הטופס */
+    margin: 0 auto; /* מרכז את הטופס באופן אופקי */
+    padding: 20px;
+    background-color:rgba(255, 255, 255,0.5);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* הצללה */
+    text-align: center;
+    direction: rtl;
+    margin-top: 100px;
+}
+.TargetForm mat-form-field{
+  margin-left: 8px;
 }
 
 /* סגנון לכותרות */
@@ -136,6 +151,22 @@ p-fieldset{
 .mat-form-field {
   width: 20px;
 }
+
+.custom-button {
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 20px; /* גודל הגופן */
+  padding: 15px 20px; /* רווחים בין הכפתור לתוכן*/ 
+  width: 100px; /* רוחב הכפתור בפיקסלים */
+   /* צבע הטקסט */
+  border:#000; /* מחיקת גבולות */
+  cursor: pointer; /* שינוי לסמן העכבר */
+  size:300px;
+  background-color: #ff5722; /* צבע מותאם אישית */
+  color: rgb(2, 2, 2); /* צבע טקסט */
+}
+
+
 
 
 

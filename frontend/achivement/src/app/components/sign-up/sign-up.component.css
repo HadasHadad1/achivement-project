@@ -4,12 +4,12 @@
     margin-right: 40px; /* ניתן לשנות ערך זה לפי הצורך */
   }
 .form {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    /* display: flex; */
+    /* justify-content: space-between; */
+    /* align-items: center; */
     margin-bottom: 20px;
     width: 100%;
-    max-width: 600px; /* רוחב מקסימלי של הטופס */
+    max-width: 500px; /* רוחב מקסימלי של הטופס */
     margin: 0 auto; /* מרכז את הטופס באופן אופקי */
     padding: 20px;
     background-color:rgba(255, 255, 255,0.5);
@@ -17,6 +17,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* הצללה */
     text-align: center;
     direction: rtl;
+    margin-top: 100px;
   }
 
   .SignUpForm mat-form-field {

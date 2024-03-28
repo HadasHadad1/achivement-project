@@ -219,13 +219,16 @@ export class MyDetailsComponent {
             let events: any = this.eventData.dataSource;
             let index: number = events.findIndex((ed: any) => ed.Id == alertDate.IdAlertDate);
             if(index >= 0){
-              if(alertDate.Status){
+              let d:any = alertDate.Date;
+              let a = new Date(d);
+              let dateNow = new Date();
+              if(alertDate.Status && a <= dateNow){
                 debugger;
                 args.element.style.border = '2px solid green';
                 args.data.Status = true;
                 events[index].Status = true;
               }
-              else{
+              else if(alertDate.Status == false && a <= dateNow){
                 args.element.style.border = '2px solid red';
                 args.data.Status = false;
                 events[index].Status = false;
@@ -392,16 +395,18 @@ export class MyDetailsComponent {
     }else if (args.data.IdTarget === 5) {
     args.element.style.backgroundColor = 'pink';
     }
-    else if (args.data.IdTarget === 6) {
+    else if (args.data.IdTarget === 10) {
     args.element.style.backgroundColor = 'brown';
     }
-    else if (args.data.IdTarget === 7) {
+    else if (args.data.IdTarget === 14) {
     args.element.style.backgroundColor = 'gray';
     }
-    if(args.data.Status){
+    let d = new Date(args.data.StartTime);
+    let dateNow = new Date();
+    if(args.data.Status && d <= dateNow){
       args.element.style.border = '2px solid green';
     }
-    else{
+    else if(args.data.Status == false && d <= dateNow){
       args.element.style.border = '2px solid red';
     }
     // Add more conditions for other events

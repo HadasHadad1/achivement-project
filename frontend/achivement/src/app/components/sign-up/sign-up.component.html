@@ -1,5 +1,6 @@
 <!-- <app-menu></app-menu> -->
 <div class="form">
+  <span style="font-size: 35px;"><b>הרשמה</b></span>
   <br><br>
   <form *ngIf="!!SignUpForm" class="SignUpForm" [formGroup]="SignUpForm" (ngSubmit)="register()">
       <mat-form-field class="example-full-width">
@@ -75,7 +76,8 @@
     <!-- <button  class="custom-button" (click)="register()">אישור</button> -->
     <!-- routerLink="/my-details" -->
     <!-- [disabled]="!SignUpForm.valid" -->
-    <button class="btn btn1" data-id="btn1" type="submit">הרשמה</button>
+    <!-- <button class="btn btn1" data-id="btn1" type="submit">הרשמה</button> -->
+    <button class="custom-button" type="submit">הרשמה</button>
     <br/><span style="color: red;">{{Error}}</span><br/>
   </form> 
 </div>
